@@ -39,7 +39,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -54,6 +53,7 @@ import com.example.petbook.ui.theme.PetBookTheme
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.asImageBitmap
 import com.example.petbook.components.AlertDialogExample
@@ -203,7 +203,7 @@ class OnboardingPetForm : ComponentActivity() {
                 AlertDialogExample(
                     onDismissRequest = {
                         this@OnboardingPetForm.showModal.value = false
-                        val intent = Intent(this@OnboardingPetForm, MainScreen::class.java)
+                        val intent = Intent(this@OnboardingPetForm, FeedActivity::class.java)
                         startActivity(intent)
                         finish()
                     }, onConfirmation = {
@@ -214,7 +214,9 @@ class OnboardingPetForm : ComponentActivity() {
                         petNameTextFieldState.clearText()
                         petRaceTextFieldState.clearText()
                         descriptionTextFieldState.clearText()
-                        selectedAge = 0
+                        val intent = Intent(this@OnboardingPetForm, FeedActivity::class.java)
+                        startActivity(intent)
+                        finish()
                     }, "Continuar", "Desea agregar otra mascota?"
                 )
             }
